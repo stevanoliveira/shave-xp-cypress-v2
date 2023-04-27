@@ -1,0 +1,14 @@
+{
+  "name": "shave-xp-cypress-v2",
+  "version": "1.0.0",
+  "description": "Projeto de testes de ponta a ponta para o Shave eXperience",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Stevan Oliveira",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^12.7.0"
+  }
+}
