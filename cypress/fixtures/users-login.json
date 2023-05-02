@@ -1,0 +1,25 @@
+{
+	"sucess": {
+		"name": "stevan",
+		"email": "stevan2@gmail.com",
+		"password": "pwd123"
+	},
+	"invpass": {
+		"email": "stevan2@gmail.com",
+		"password": "wrongpass"
+	},
+	"email404": {
+		"email": "stevan2@404.com",
+		"password": "pwd123"
+	},
+	"shortpass": ["1", "12", "123", "1234", "12345"],
+	"invemails": [
+		"stevan&gmail.com",
+		"stevan.com.br",
+		"@gmail.com",
+		"stevan@",
+		"123123123",
+		"@#$%¨&*",
+		"xpto123"
+	]
+}

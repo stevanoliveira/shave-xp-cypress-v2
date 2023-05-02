@@ -3,25 +3,21 @@
 import loginPage from "../support/pages/login"
 import shaversPage from "../support/pages/shavers"
 
+import data from "../fixtures/users-login.json"
+
 describe("login", () => {
 	context("when I submit the form", () => {
-		it("should log in successfully", () => {
-			const user = {
-				name: "stevan",
-				email: "stevan2@gmail.com",
-				password: "pwd123",
-			}
+		it.only("should log in successfully", () => {
+			const user = data.sucess
+
+			cy.createUser(user)
 
 			loginPage.submit(user.email, user.password)
 			shaversPage.header.userShouldBeLoggedIn(user.name)
 		})
 
 		it("should not log in with a wrong password", () => {
-			const user = {
-				name: "stevan",
-				email: "stevan2@gmail.com",
-				password: "wrongPass",
-			}
+			const user = data.invpass
 
 			loginPage.submit(user.email, user.password)
 
@@ -32,11 +28,7 @@ describe("login", () => {
 		})
 
 		it("should not log in with a non-existent email", () => {
-			const user = {
-				name: "stevan",
-				email: "stevan2@404.com",
-				password: "123456",
-			}
+			const user = data.email404
 
 			cy.visit("http://localhost:3000")
 
@@ -63,9 +55,7 @@ describe("login", () => {
 	})
 
 	context("password too short", () => {
-		const passwords = ["1", "12", "123", "1234", "12345"]
-
-		passwords.forEach((p) => {
+		data.shortpass.forEach((p) => {
 			it(`must not log in with the password: ${p}`, () => {
 				loginPage.submit("stevan2@gmail.com", p)
 
@@ -75,17 +65,7 @@ describe("login", () => {
 	})
 
 	context("email with incorrect format", () => {
-		const emails = [
-			"stevan&gmail.com",
-			"stevan.com.br",
-			"@gmail.com",
-			"stevan@",
-			"123123123",
-			"@#$%¨&*",
-			"xpto123",
-		]
-
-		emails.forEach((e) => {
+		data.invemails.forEach((e) => {
 			it(`must not log in with the email: ${e}`, () => {
 				loginPage.submit(e, "pwd123")
 
